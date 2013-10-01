@@ -82,7 +82,6 @@ define(["jQuery", "kendo"], function ($, kendo) {
             _scrollWrapper.prepend(_indexList);
             $("body").prepend(_indexCard);
 
-           
             that.userEvents = new kendo.UserEvents(_indexList, {
                 stopPropagation: true,
                 press: function (e) { _onIndexDragStart(); _onIndexDragMove(e); },

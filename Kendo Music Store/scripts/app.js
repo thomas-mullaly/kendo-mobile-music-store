@@ -8,11 +8,16 @@ define(["jQuery", "kendo", "kendoIndexedListView", "data", "config", "utils", "c
     var init = function () {
         window.onerror = _onError;
 
-        var kendoApp = new kendo.mobile.Application(document.body, {
+        var options = {
             transition: "fade",
             initial: "about-view",
             loading: '<h1 class="loading-message">Loading...</h1>'
-        });
+        };
+        
+        if (kendo.support.mobileOS.name === "ios") {
+            options.skin = "ios";
+        }
+        var kendoApp = new kendo.mobile.Application(document.body, options);
         utils.init(kendoApp);
         cart.items.bind("change", function () { utils.updateCartBadges($, cart); });
     };
