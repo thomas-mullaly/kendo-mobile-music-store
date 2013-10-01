@@ -2,6 +2,7 @@ define(["kendo", "data", "utils", "cart", "albums"], function (kendo, data, util
     var _createAlbumsListView = function () {
         var listViewElement = $("#albums-listview");
         var existingListView = listViewElement.data().kendoMobileListView;
+
         var viewModel = kendo.observable($.extend({
             albums: data.albumsList
         }, albums.baseAlbumViewModel));

@@ -25,8 +25,9 @@ define(["jQuery", "kendo"], function ($, kendo) {
     };
 
     var _scrollToIndex = function (targetIndex) {
-        var targetTop = that.headers[that.headers.length - targetIndex - 1].offset;
-        that._scroller().scrollTo(0, targetTop * -1);
+        var groupContainers = $(that.element).find(".km-group-container");
+        var targetTop = $(groupContainers[targetIndex]).position().top + that.scroller().scrollTop + 1;
+        that.scroller().scrollTo(0, targetTop * -1);
     };
 
     var _showIndexCard = function (y, text) {
@@ -71,7 +72,7 @@ define(["jQuery", "kendo"], function ($, kendo) {
             base.fn.init.call(that, element, options);
             $(element).addClass("km-indexedlistview");
 
-            if (that._scroller()) {
+            if (that.scroller()) {
                 kendo.onResize(function() {
                     _sizeIndexList(that.headers.length);
                 });
@@ -90,15 +91,20 @@ define(["jQuery", "kendo"], function ($, kendo) {
                 move: _onIndexDragMove,
                 end: _onIndexDragEnd
             });
+            
+            that.bind("_dataSource", function (e) {
+                if (e.dataSource) {
+                    e.dataSource.unbind("change", that._refresh);
+                }
+                that.dataSource.bind("change", that._refresh);
+            });
         },
 
         options: $.extend(base.options, {
             name: "IndexedListView"
         }),
 
-        refresh: function (e) {
-            base.fn.refresh.call(that, e);
-
+        _refresh: function (e) {
             if (that.dataSource.group()[0]) {
                 _indexList.empty();
                 _sizeIndexList(e.items.length);
