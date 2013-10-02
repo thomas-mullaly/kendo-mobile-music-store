@@ -199,6 +199,11 @@ input[type="text"], input[type="password"] {
     vertical-align: middle;
 }
 
+.albums-listview {
+    width: auto;
+    overflow: visible;
+}
+
 .album-cart .km-icon.cartQty {
     padding-bottom: .45em;
 }
