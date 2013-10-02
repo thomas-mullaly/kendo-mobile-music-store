@@ -20,6 +20,7 @@ define(["jQuery", "kendo", "config", "utils", "data", "cart", "albums"], functio
             }, albums.baseAlbumViewModel));
 
             if(existingListView) {
+                listViewElement.unwrap();
                 existingListView.destroy();
             }
 

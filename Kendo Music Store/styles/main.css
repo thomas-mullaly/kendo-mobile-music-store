@@ -551,6 +551,8 @@ input[type="text"], input[type="password"] {
     margin-right: -36px;
 }
 
+.km-android #search-view .km-view-title { visibility: visible; }
+
 .km-root .km-android .km-show-title::after
 {
     display: none;

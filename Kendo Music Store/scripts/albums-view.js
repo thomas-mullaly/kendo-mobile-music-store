@@ -8,6 +8,8 @@ define(["kendo", "data", "utils", "cart", "albums"], function (kendo, data, util
         }, albums.baseAlbumViewModel));
 
         if(existingListView) {
+            // Unwrap the ListView to workaround a bug in the 'destory' method of the ListView. The 'destroy' method
+            // doesn't remove the wrapper element from the DOM.
             listViewElement.unwrap();
             existingListView.destroy();
         }
