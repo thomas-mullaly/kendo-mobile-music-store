@@ -8,6 +8,7 @@ define(["kendo", "data", "utils", "cart", "albums"], function (kendo, data, util
         }, albums.baseAlbumViewModel));
 
         if(existingListView) {
+            listViewElement.unwrap();
             existingListView.destroy();
         }
 
