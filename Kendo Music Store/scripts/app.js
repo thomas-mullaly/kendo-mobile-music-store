@@ -6,7 +6,7 @@ define(["jQuery", "kendo", "kendoIndexedListView", "data", "config", "utils", "c
     };
 
     var init = function () {
-        window.onerror = _onError;
+        //window.onerror = _onError;
 
         var options = {
             transition: "fade",

@@ -42,7 +42,6 @@ define(["jQuery", "kendo", "config", "utils", "data", "cart", "albums"], functio
     return {
         init: function (initEvent) {
             _viewElement = initEvent.sender.element;
-            _viewElement.find(".search-text").change(submitSearch);
         },
 
         show: show,

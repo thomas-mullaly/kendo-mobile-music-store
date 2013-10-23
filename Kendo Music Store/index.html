@@ -85,8 +85,21 @@
 
 		<!-- Search Views -->
 
-		<div data-role="view" id="search-view" data-layout="search-layout" data-title="Search" data-init="app.searchView.init" data-show="app.searchView.show" style="display: none;">
-			<ul id="search-listview" data-role="listview" data-bind="source: results" data-template="album-list-template" data-style="inset" data-endless-scroll="true" data-auto-bind="false"></ul>
+		<div id="search-view" 
+            data-role="view"
+            data-layout="search-layout" 
+            data-title="Search"
+            data-init="app.searchView.init" 
+            data-show="app.searchView.show" 
+            style="display: none;">
+			<ul id="search-listview" 
+                style="width:auto;"
+                data-role="listview" 
+                data-bind="source: results" 
+                data-template="album-list-template" 
+                data-style="inset" 
+                data-endless-scroll="true"
+                ></ul>
 		</div>
 
 		<div data-role="layout" data-id="search-layout" data-show="app.baseLayout.show">
@@ -419,13 +432,15 @@
 		</script>
 
 		<script id="album-list-template" type="text/x-kendo-template">
-			<img class="album-art" data-bind="attr: {src: albumArtUrl}" />
-			<div class="album-cart" data-role="button" data-bind="click: onAddToCart">
-				<span data-bind="text: qtyInCart, attr: {class: buttonClasses}"></span><span class="km-icon km-cart"></span>
-			</div>
-			<h1 class="album-title" data-bind="text: Title"></h1>
-			<h2 class="album-artist" data-bind="text: Artist.Name"></h2>
-			<span class="album-price" data-bind="text: albumPrice"></span>
+            <div>
+    			<img class="album-art" data-bind="attr: {src: albumArtUrl}" />
+    			<div class="album-cart" data-role="button" data-bind="click: onAddToCart">
+    				<span data-bind="text: qtyInCart, attr: {class: buttonClasses}"></span><span class="km-icon km-cart"></span>
+    			</div>
+    			<h1 class="album-title" data-bind="text: Title"></h1>
+    			<h2 class="album-artist" data-bind="text: Artist.Name"></h2>
+    			<span class="album-price" data-bind="text: albumPrice"></span>
+            </div>
 		</script>
 			
 		<script id="artist-filter-template" type="text/x-kendo-template">

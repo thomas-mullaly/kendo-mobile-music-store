@@ -28,17 +28,7 @@ define(["jQuery", "kendo", "config", "utils"], function ($, kendo, config, utils
         requestEnd: function () { utils.hideLoading(); },
         error: function () { utils.hideLoading(); utils.showError("There was an error loading the data from the server. Please close the app and try again."); }
     };
-
-    var EndlessScrollDataSource = kendo.data.DataSource.extend({
-        _observe: function(data) {
-            if(this._page > 1) {
-                this._data.push.apply(this._data, data);
-                return this._data;
-            }
-            return kendo.data.DataSource.prototype._observe.call(this, data);
-        }
-    });
-
+    
     return {
         clear: function (dataSource) {
             dataSource.view().splice(0, dataSource.view().length);
@@ -66,18 +56,18 @@ define(["jQuery", "kendo", "config", "utils"], function ($, kendo, config, utils
             }
         })),
 
-        albumsList: new EndlessScrollDataSource(new DataSourceConfig(config.albumsUrl + "?$expand=Artist", "Title", {
+        albumsList: new kendo.data.DataSource(new DataSourceConfig(config.albumsUrl + "?$expand=Artist", "Title", {
             serverPaging: true,
             serverFiltering: true,
             serverSorting: true,
-            pageSize: 20
+            pageSize: 50
         })),
 
-        searchList: new EndlessScrollDataSource(new DataSourceConfig(config.albumsUrl + "?$expand=Artist", "Title", {
+        searchList: new kendo.data.DataSource(new DataSourceConfig(config.albumsUrl + "?$expand=Artist", "Title", {
             serverPaging: true,
             serverFiltering: true,
             serverSorting: true,
-            pageSize: 20
+            pageSize: 50
         })),
 
         orderHistory: function (user, pass) {
